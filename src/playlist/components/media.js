@@ -18,23 +18,24 @@ class Media extends PureComponent{
     // }
     handleClick = (event) => {
         // console.log(this.props.title)
-        this.setState({
-          author: 'Otro Autor',
-        })
+        // this.setState({
+        //   author: 'Otro Autor',
+        // })
+        this.props.openModal(this.props);
     }
     render () {
-        // const styles = {
-        //     container: {
-        //         fontSize: 18,
-        //         color: 'peru',
-        //         background: 'black',
-        //         cursor: 'pointer',
-        //         width: 260,
-        //         border: '1px solid blue',
-        //     }
-        // }
+        const styles = {
+            container: {
+                fontSize: 18,
+                color: 'peru',
+                background: 'black',
+                cursor: 'pointer',
+                width: 260,
+                border: '1px solid blue',
+            }
+        }
         return (
-            <div className="Media" onClick={this.handleClick}>
+            <div className="Media" onClick={this.props.handleClick}>
                 <div className="Media-cover ">
                     <img className="Media-image" src={this.props.cover} alt="" width={260} height={160}/>
                     <h3 className="Media-title">{this.props.title}</h3>
@@ -46,7 +47,8 @@ class Media extends PureComponent{
 }
 Media.propTypes = {
     cover: PropTypes.string,
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
     author: PropTypes.string,
+    type: PropTypes.oneOf(['video', 'audio']),
 }
 export default Media;
